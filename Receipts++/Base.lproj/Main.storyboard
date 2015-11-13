@@ -129,15 +129,6 @@
                                     <!--2015-11-12 19:45:49 +0000-->
                                 </date>
                             </datePicker>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wzH-29-QQl">
-                                <rect key="frame" x="196" y="204" width="209" height="29"/>
-                                <animations/>
-                                <segments>
-                                    <segment title="Personal"/>
-                                    <segment title="Family"/>
-                                    <segment title="Business"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Opx-Z1-8GI">
                                 <rect key="frame" x="277" y="464" width="46" height="30"/>
                                 <animations/>
@@ -158,25 +149,56 @@
                                     <action selector="cancelButtonPressed:" destination="DHy-oA-Uac" eventType="touchUpInside" id="9fq-oU-lQa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIz-V9-YgE">
+                                <rect key="frame" x="278" y="204" width="44" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Family"/>
+                                <connections>
+                                    <action selector="familyButtonPressed:" destination="DHy-oA-Uac" eventType="touchUpInside" id="qgY-wa-Os6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kwe-Az-mjx">
+                                <rect key="frame" x="330" y="204" width="62" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Business"/>
+                                <connections>
+                                    <action selector="businessButtonPressed:" destination="DHy-oA-Uac" eventType="touchUpInside" id="7cs-cd-agP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iyb-t3-Zbj">
+                                <rect key="frame" x="210" y="204" width="60" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Personal"/>
+                                <connections>
+                                    <action selector="personalButtonPressed:" destination="DHy-oA-Uac" eventType="touchUpInside" id="nwb-Ho-bmY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HDr-dj-cu5" firstAttribute="top" secondItem="Opx-Z1-8GI" secondAttribute="bottom" constant="8" id="0FY-az-d0r"/>
-                            <constraint firstItem="wzH-29-QQl" firstAttribute="centerX" secondItem="Igh-cm-6yv" secondAttribute="centerX" id="4hs-hM-SGh"/>
-                            <constraint firstItem="wzH-29-QQl" firstAttribute="top" secondItem="eSz-uY-yJp" secondAttribute="bottom" constant="8" id="9AX-h2-CCF"/>
+                            <constraint firstItem="Kwe-Az-mjx" firstAttribute="top" secondItem="eSz-uY-yJp" secondAttribute="bottom" constant="8" id="2aK-sW-o4W"/>
+                            <constraint firstItem="AIz-V9-YgE" firstAttribute="top" secondItem="eSz-uY-yJp" secondAttribute="bottom" constant="8" id="8DH-rZ-OAn"/>
+                            <constraint firstItem="iyb-t3-Zbj" firstAttribute="top" secondItem="eSz-uY-yJp" secondAttribute="bottom" constant="8" id="8H7-t4-ob4"/>
                             <constraint firstItem="eSz-uY-yJp" firstAttribute="centerX" secondItem="H4h-0E-m3g" secondAttribute="centerX" id="9QL-Z4-cUF"/>
+                            <constraint firstItem="AIz-V9-YgE" firstAttribute="leading" secondItem="iyb-t3-Zbj" secondAttribute="trailing" constant="8" id="Am5-BN-b9U"/>
                             <constraint firstItem="4vS-1w-fIe" firstAttribute="centerX" secondItem="Igh-cm-6yv" secondAttribute="centerX" id="Bxv-2W-T0X"/>
                             <constraint firstItem="Opx-Z1-8GI" firstAttribute="centerX" secondItem="Igh-cm-6yv" secondAttribute="centerX" id="EVO-9z-0Xx"/>
+                            <constraint firstItem="4vS-1w-fIe" firstAttribute="top" secondItem="iyb-t3-Zbj" secondAttribute="bottom" constant="6" id="F3g-7m-hwO"/>
+                            <constraint firstItem="4vS-1w-fIe" firstAttribute="top" secondItem="AIz-V9-YgE" secondAttribute="bottom" constant="6" id="Hmz-2r-kwG"/>
                             <constraint firstItem="HDr-dj-cu5" firstAttribute="top" secondItem="4vS-1w-fIe" secondAttribute="bottom" constant="46" id="Ld7-dm-rgY"/>
                             <constraint firstItem="H4h-0E-m3g" firstAttribute="top" secondItem="jro-Iq-Q96" secondAttribute="bottom" constant="8" id="QRK-ka-x3D"/>
                             <constraint firstItem="Opx-Z1-8GI" firstAttribute="top" secondItem="4vS-1w-fIe" secondAttribute="bottom" constant="8" id="QgX-Vg-Fja"/>
                             <constraint firstItem="eSz-uY-yJp" firstAttribute="width" secondItem="H4h-0E-m3g" secondAttribute="width" id="Sk8-Qf-BFW"/>
                             <constraint firstItem="Opx-Z1-8GI" firstAttribute="leading" secondItem="HDr-dj-cu5" secondAttribute="trailing" constant="-46" id="br0-NE-yb0"/>
-                            <constraint firstItem="4vS-1w-fIe" firstAttribute="top" secondItem="wzH-29-QQl" secondAttribute="bottom" constant="8" id="hZ7-lT-kuM"/>
+                            <constraint firstItem="Kwe-Az-mjx" firstAttribute="leading" secondItem="AIz-V9-YgE" secondAttribute="trailing" constant="8" id="fz4-nE-P69"/>
                             <constraint firstItem="H4h-0E-m3g" firstAttribute="centerX" secondItem="Igh-cm-6yv" secondAttribute="centerX" id="odf-bY-bSy"/>
                             <constraint firstItem="HDr-dj-cu5" firstAttribute="centerX" secondItem="Igh-cm-6yv" secondAttribute="centerX" id="rih-Rs-Z2w"/>
                             <constraint firstItem="eSz-uY-yJp" firstAttribute="top" secondItem="H4h-0E-m3g" secondAttribute="bottom" constant="8" id="v02-Cf-SKa"/>
+                            <constraint firstItem="AIz-V9-YgE" firstAttribute="centerX" secondItem="Igh-cm-6yv" secondAttribute="centerX" id="vun-AP-oZW"/>
+                            <constraint firstItem="4vS-1w-fIe" firstAttribute="top" secondItem="Kwe-Az-mjx" secondAttribute="bottom" constant="6" id="xUL-ae-iOS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -186,10 +208,12 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="businessButton" destination="Kwe-Az-mjx" id="07A-js-9HU"/>
                         <outlet property="datePicker" destination="4vS-1w-fIe" id="eVw-jo-VqM"/>
+                        <outlet property="familyButton" destination="AIz-V9-YgE" id="oeW-ce-OPx"/>
+                        <outlet property="personalButton" destination="iyb-t3-Zbj" id="vlF-c6-1KY"/>
                         <outlet property="receiptAmountTextField" destination="H4h-0E-m3g" id="SOK-de-r7M"/>
                         <outlet property="receiptNoteTextView" destination="eSz-uY-yJp" id="afP-2F-WGI"/>
-                        <outlet property="tagSegControl" destination="wzH-29-QQl" id="sT2-iE-vph"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xuR-VR-LBo" userLabel="First Responder" sceneMemberID="firstResponder"/>

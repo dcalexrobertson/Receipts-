@@ -16,7 +16,10 @@
 @property (weak, nonatomic) IBOutlet UITextView *receiptNoteTextView;
 @property (weak, nonatomic) IBOutlet UITextField *receiptAmountTextField;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *tagSegControl;
+
+@property (weak, nonatomic) IBOutlet UIButton *familyButton;
+@property (weak, nonatomic) IBOutlet UIButton *businessButton;
+@property (weak, nonatomic) IBOutlet UIButton *personalButton;
 
 @end
 
@@ -38,6 +41,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)personalButtonPressed:(id)sender {
+    self.personalButton.selected = !self.personalButton.selected;
+}
+- (IBAction)businessButtonPressed:(id)sender {
+    self.businessButton.selected = !self.businessButton.selected;
+}
+- (IBAction)familyButtonPressed:(id)sender {
+    self.familyButton.selected = !self.familyButton.selected;
+}
+
 
 - (IBAction)doneButtonPressed:(id)sender {
     
@@ -46,9 +59,15 @@
     newReceipt.note = self.receiptNoteTextView.text;
     newReceipt.timeStamp = self.datePicker.date;
     
-    NSString *tagName = [self.tagSegControl titleForSegmentAtIndex:self.tagSegControl.selectedSegmentIndex];
-
-    [newReceipt addTagsObject:[self checkForTagwithName:tagName]];
+    if (self.personalButton.selected) {
+        [newReceipt addTagsObject:[self checkForTagwithName:@"Personal"]];
+    }
+    if (self.businessButton.selected) {
+        [newReceipt addTagsObject:[self checkForTagwithName:@"Business"]];
+    }
+    if (self.familyButton.selected) {
+        [newReceipt addTagsObject:[self checkForTagwithName:@"Family"]];
+    }
     
     [self dismissViewControllerAnimated:YES completion:nil];
     

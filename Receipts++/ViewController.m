@@ -71,7 +71,6 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     Tag *tag = self.tags[section];
-    
     return tag.receipts.count;
 
 }
