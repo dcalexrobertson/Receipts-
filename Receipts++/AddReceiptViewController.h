@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class CoreDataStack;
+
 @interface AddReceiptViewController : UIViewController
 
-@property (nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) CoreDataStack *stack;
 
 @end

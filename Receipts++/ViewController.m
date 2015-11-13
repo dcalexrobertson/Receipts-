@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AddReceiptViewController.h"
-#import "AppDelegate.h"
+#import "CoreDataStack.h"
 #import "Tag.h"
 #import "Receipt.h"
 
@@ -18,6 +18,7 @@
 
 @property (nonatomic) NSArray *tags;
 @property (nonatomic) NSArray *receipts;
+@property (nonatomic) CoreDataStack *stack;
 
 @end
 
@@ -26,16 +27,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+    self.stack = [[CoreDataStack alloc] init];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     
     NSFetchRequest *tagsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
-    self.tags = [self.managedObjectContext executeFetchRequest:tagsRequest error:nil];
+    self.tags = [self.stack.context executeFetchRequest:tagsRequest error:nil];
     
     NSFetchRequest *receiptsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Receipt"];
-    self.receipts = [self.managedObjectContext executeFetchRequest:receiptsRequest error:nil];
+    self.receipts = [self.stack.context executeFetchRequest:receiptsRequest error:nil];
     
     [self.tableView reloadData];
 }
@@ -51,7 +52,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     AddReceiptViewController *addReceiptVC = [segue destinationViewController];
-    addReceiptVC.managedObjectContext = self.managedObjectContext;
+    addReceiptVC.stack = self.stack;
 }
 
 #pragma mark - Table View

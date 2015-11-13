@@ -21,6 +21,7 @@
 		FAF6970E1BF526B10032ADB0 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF697081BF526B10032ADB0 /* Tag.m */; };
 		FAF6970F1BF526B10032ADB0 /* Receipt+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF6970A1BF526B10032ADB0 /* Receipt+CoreDataProperties.m */; };
 		FAF697101BF526B10032ADB0 /* Receipt.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF6970C1BF526B10032ADB0 /* Receipt.m */; };
+		FAF697191BF56A1D0032ADB0 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF697181BF56A1D0032ADB0 /* CoreDataStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,8 @@
 		FAF6970A1BF526B10032ADB0 /* Receipt+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Receipt+CoreDataProperties.m"; path = "../Receipt+CoreDataProperties.m"; sourceTree = "<group>"; };
 		FAF6970B1BF526B10032ADB0 /* Receipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Receipt.h; path = ../Receipt.h; sourceTree = "<group>"; };
 		FAF6970C1BF526B10032ADB0 /* Receipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Receipt.m; path = ../Receipt.m; sourceTree = "<group>"; };
+		FAF697171BF56A1D0032ADB0 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		FAF697181BF56A1D0032ADB0 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +121,10 @@
 		FA3676C51BF5189D003C3542 /* Receipts++ */ = {
 			isa = PBXGroup;
 			children = (
+				FAF6971A1BF56A380032ADB0 /* Core Data Stack */,
 				FAF697121BF52DBF0032ADB0 /* Controllers */,
 				FAF697111BF52D930032ADB0 /* Managed Objects */,
 				FA3676CF1BF5189D003C3542 /* Main.storyboard */,
-				FA3676D21BF5189D003C3542 /* Receipts__.xcdatamodeld */,
 				FA3676C61BF5189D003C3542 /* Supporting Files */,
 			);
 			path = "Receipts++";
@@ -182,6 +185,16 @@
 				FA3676FD1BF5203D003C3542 /* AddReceiptViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FAF6971A1BF56A380032ADB0 /* Core Data Stack */ = {
+			isa = PBXGroup;
+			children = (
+				FAF697171BF56A1D0032ADB0 /* CoreDataStack.h */,
+				FAF697181BF56A1D0032ADB0 /* CoreDataStack.m */,
+				FA3676D21BF5189D003C3542 /* Receipts__.xcdatamodeld */,
+			);
+			name = "Core Data Stack";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +332,7 @@
 				FA3676FE1BF5203D003C3542 /* AddReceiptViewController.m in Sources */,
 				FAF6970E1BF526B10032ADB0 /* Tag.m in Sources */,
 				FA3676CE1BF5189D003C3542 /* ViewController.m in Sources */,
+				FAF697191BF56A1D0032ADB0 /* CoreDataStack.m in Sources */,
 				FA3676CB1BF5189D003C3542 /* AppDelegate.m in Sources */,
 				FAF6970F1BF526B10032ADB0 /* Receipt+CoreDataProperties.m in Sources */,
 				FA3676C81BF5189D003C3542 /* main.m in Sources */,

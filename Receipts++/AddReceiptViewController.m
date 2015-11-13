@@ -7,9 +7,9 @@
 //
 
 #import "AddReceiptViewController.h"
+#import "CoreDataStack.h"
 #import "Receipt.h"
 #import "Tag.h"
-#import "AppDelegate.h"
 
 @interface AddReceiptViewController ()
 
@@ -54,7 +54,7 @@
 
 - (IBAction)doneButtonPressed:(id)sender {
     
-    Receipt *newReceipt = [NSEntityDescription insertNewObjectForEntityForName:@"Receipt" inManagedObjectContext:self.managedObjectContext];
+    Receipt *newReceipt = [NSEntityDescription insertNewObjectForEntityForName:@"Receipt" inManagedObjectContext:self.stack.context];
     newReceipt.amount = @([self.receiptAmountTextField.text floatValue]);
     newReceipt.note = self.receiptNoteTextView.text;
     newReceipt.timeStamp = self.datePicker.date;
@@ -71,8 +71,7 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
-    [appDel saveContext];
+    [self.stack saveContext];
 }
 
 
@@ -88,7 +87,7 @@
     request.predicate = predicate;
     request.fetchLimit = 1;
 
-    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:nil];
+    NSArray *results = [self.stack.context executeFetchRequest:request error:nil];
     
     if ([results count]) {
         
@@ -96,7 +95,7 @@
         
     } else {
         
-        Tag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
+        Tag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.stack.context];
         tag.tagName = tagName;
         return tag;
         
