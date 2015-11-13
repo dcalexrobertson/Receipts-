@@ -27,15 +27,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    NSFetchRequest *tagsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Tags"];
-    self.tags = [self.managedObjectContext executeFetchRequest:tagsRequest error:nil];
-    
-    NSFetchRequest *receiptsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Receipts"];
-    self.receipts = [self.managedObjectContext executeFetchRequest:receiptsRequest error:nil];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
+    NSFetchRequest *tagsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+    self.tags = [self.managedObjectContext executeFetchRequest:tagsRequest error:nil];
+    
+    NSFetchRequest *receiptsRequest = [NSFetchRequest fetchRequestWithEntityName:@"Receipt"];
+    self.receipts = [self.managedObjectContext executeFetchRequest:receiptsRequest error:nil];
     
     [self.tableView reloadData];
 }
@@ -44,6 +44,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Segue
 
@@ -60,6 +61,13 @@
     return self.tags.count;
 }
 
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    Tag *tag = self.tags[section];
+    
+    return tag.tagName;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     Tag *tag = self.tags[section];
@@ -70,7 +78,14 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"receiptCell" forIndexPath:indexPath];
+    
+    Tag *tag = self.tags[indexPath.section];
+    NSArray *receiptsForTag = [tag.receipts allObjects];
+    Receipt *receipt = receiptsForTag[indexPath.row];
+    
+    cell.textLabel.text = [receipt.amount stringValue];
+    cell.detailTextLabel.text = receipt.note;
     
     return cell;
 }

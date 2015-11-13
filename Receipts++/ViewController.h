@@ -11,7 +11,6 @@
 @interface ViewController : UIViewController
 
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 @end
 

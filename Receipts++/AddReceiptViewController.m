@@ -9,6 +9,7 @@
 #import "AddReceiptViewController.h"
 #import "Receipt.h"
 #import "Tag.h"
+#import "AppDelegate.h"
 
 @interface AddReceiptViewController ()
 
@@ -41,21 +42,46 @@
 - (IBAction)doneButtonPressed:(id)sender {
     
     Receipt *newReceipt = [NSEntityDescription insertNewObjectForEntityForName:@"Receipt" inManagedObjectContext:self.managedObjectContext];
-    newReceipt.amount = @([self.receiptAmountTextField.text intValue]);
+    newReceipt.amount = @([self.receiptAmountTextField.text floatValue]);
     newReceipt.note = self.receiptNoteTextView.text;
     newReceipt.timeStamp = self.datePicker.date;
     
-    Tag *newTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
-    newTag.tagName = [self.tagSegControl titleForSegmentAtIndex:self.tagSegControl.selectedSegmentIndex];
+    NSString *tagName = [self.tagSegControl titleForSegmentAtIndex:self.tagSegControl.selectedSegmentIndex];
+
+    [newReceipt addTagsObject:[self checkForTagwithName:tagName]];
     
-    [newReceipt addTagsObject:newTag];
+    [self dismissViewControllerAnimated:YES completion:nil];
     
+    AppDelegate *appDel = [[UIApplication sharedApplication] delegate];
+    [appDel saveContext];
 }
 
 
 - (IBAction)cancelButtonPressed:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (Tag *)checkForTagwithName:(NSString *)tagName {
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Tag"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tagName = %@", tagName];
+    request.predicate = predicate;
+    request.fetchLimit = 1;
+
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:nil];
+    
+    if ([results count]) {
+        
+        return [results firstObject];
+        
+    } else {
+        
+        Tag *tag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
+        tag.tagName = tagName;
+        return tag;
+        
+    }
 }
 
 /*
